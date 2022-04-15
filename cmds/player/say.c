@@ -3,7 +3,7 @@ inherit CORE_CLEAN_UP;
 int main(object me, string arg)
 {
     arg = arg || "...";
-    msg("MAG", "$ME说到：" + arg, me);
+    msg("MAG", "$ME said: " + arg, me);
 
     return 1;
 }
@@ -11,9 +11,9 @@ int main(object me, string arg)
 int help(object me)
 {
     write(@HELP
-指令格式 : say [内容]
+Command : say [content]
 
-这个指令可以让你和房间里的其他玩家聊天。
+This command allows you to chat with other players in the room.
 
 HELP );
     return 1;

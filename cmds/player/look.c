@@ -67,14 +67,14 @@ int look_room(object me, object env)
         if (sizeof(dirs) == 0)
             str += "    这里没有任何明显的出路。\n";
         else if (sizeof(dirs) == 1)
-            str += "    这里唯一的出口是 " + BOLD + dirs[0] + NOR + "。\n";
+            str += "    The only exit here is " + BOLD + dirs[0] + NOR + "。\n";
         else
             str += sprintf("    这里明显的出口是 " + BOLD + "%s" + NOR + " 和 " + BOLD + "%s" + NOR + "。\n",
                            implode(dirs[0..sizeof(dirs)-2], "、"), dirs[sizeof(dirs) - 1]);
     }
     else
     {
-        str += "    这里没有任何出路。\n";
+        str += "\nNo exits here.\n";
     }
     str += look_all_inventory_of_room(me, env);
     tell_object(me, str);

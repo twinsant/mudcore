@@ -15,20 +15,20 @@ string pronoun(int pronoun_number, mixed arg)
     switch(pronoun_number)
     {
         case 1:
-            return "我";
+            return "I";
 
         case 2:
-            return "你";
+            return "You";
 
         case 3:
             switch( arg )
             {
-                case MALE: return "他";
-                case FEMALE: return "她";
+                case MALE: return "He";
+                case FEMALE: return "She";
                 default:
-                    return "它";
+                    return "It";
             }
         default:
-            error("错误的人称代词。\n");
+            error("Unknown pronoun\n");
     }
 }

@@ -22,6 +22,7 @@ private object connect(int port)
         write("服务器维护中，请稍候……\n");
         destruct(this_object());
     }
+    debug_message("LOGIN_OB is " + LOGIN_OB);
     return login_ob;
 }
 

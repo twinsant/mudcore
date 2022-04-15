@@ -79,6 +79,7 @@ void rehash()
     string *cmds, *path = CMD_PATH_STD + CMD_PATH_WIZ;
     string alias;
     mapping cmdlist;
+    string c;
 
     foreach(string dir in path)
     {
@@ -115,6 +116,7 @@ object find_command(string verb)
     object file;
     string *path = CMD_PATH_STD;
     mapping current;
+    string k, v;
 
     if (this_player() && wizardp(this_player()))
     {
