@@ -10,7 +10,7 @@
  */
 mixed compile_object(string str)
 {
-    // debug_message("[CORE_MASTER_OB]->compile_object():" + str);
+    debug_message("[CORE_MASTER_OB]->compile_object():" + str);
 
 #ifdef WORLD_DIR
     if (sscanf(str, WORLD_DIR + "%*s", str))

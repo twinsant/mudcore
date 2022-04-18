@@ -12,9 +12,12 @@ mixed compile_area(string file)
     object ob;
     int x, y, z, m, n;
 
+    debug_message(sprintf("comple_area: %s", file));
+
     n = strsrch(file, "/", -1);
     if (n < 1)
     {
+        debug_message("Not virtual room.");
         return 0;
     }
 
@@ -22,6 +25,7 @@ mixed compile_area(string file)
 
     if (file_size(virtual + ".c") < 1)
     {
+        debug_message(sprintf("No virtual room c file: %s", virtual));
         return 0;
     }
 
@@ -29,18 +33,22 @@ mixed compile_area(string file)
     {
         if ((m = sscanf(file[n + 1..], "%d,%d", x, y)) != 2)
         {
+            debug_message("No coordinate for virtual room, try maze.");
             return virtual->query_maze_room(file[n + 1..]);
         }
     }
 
     if (m == 2 && !(ob = new (virtual, x, y)))
     {
+        debug_message("No 2D room.");
         return 0;
     }
     else if (m == 3 && !(ob = new (virtual, x, y, z)))
     {
+        debug_message("No 3D room.");
         return 0;
     }
+    debug_message(sprintf("New room %s at (%d, %d, %d)", virtual, x, y, z));
 
     return ob;
 }

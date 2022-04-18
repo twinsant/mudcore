@@ -74,7 +74,7 @@ varargs void boardcast(string type, string msg, object me, object you, object *o
     // 对其他人显示的消息
     other_msg = replace_string(msg, "$ME", my_name);
     // 对 you 的消息处理
-    if (objectp(you) && living(you))
+    if (objectp(you))
     {
         your_name = you->name() || "无名氏";
         // 对 me 显示的消息
