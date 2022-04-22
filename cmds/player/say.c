@@ -3,7 +3,7 @@ inherit CORE_CLEAN_UP;
 int main(object me, string arg)
 {
     arg = arg || "...";
-    msg("MAG", "$ME said: " + arg, me);
+    msg("MAG", "$ME 说: " + arg, me);
 
     return 1;
 }
