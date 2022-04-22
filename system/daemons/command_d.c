@@ -26,6 +26,8 @@ private nosave mapping default_aliases = ([
     "u":"go up",
     "i":"inventory",
     "l":"look",
+    "f":"fight",
+    "p":"pick",
 ]);
 
 nosave mapping commands = ([ ]);
