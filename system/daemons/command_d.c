@@ -28,6 +28,7 @@ private nosave mapping default_aliases = ([
     "l":"look",
     "f":"fight",
     "p":"pick",
+    "g":"give",
 ]);
 
 nosave mapping commands = ([ ]);
@@ -40,6 +41,9 @@ nomask mapping query_commands()
 string default_alias(string verb)
 {
     string *word;
+    string *shrinked = ({});
+    string w;
+    int space = 0;
 
     // verb = lower_case(verb);
 
@@ -50,10 +54,28 @@ string default_alias(string verb)
     }
 
     word = explode(verb, " ");
-    if (sizeof(word) && !undefinedp(default_aliases[word[0]]))
+    // debug_message(sprintf("word array %O", word));
+    if (sizeof(word))
     {
-        word[0] = default_aliases[word[0]];
-        return implode(word, " ");
+        if (!undefinedp(default_aliases[word[0]]))
+        {
+            word[0] = default_aliases[word[0]];
+        }
+
+        // shrink spaces
+        foreach(w in word) {
+            if (strcmp(w, "") == 0) {
+                space += 1;
+            }else{
+                space = 0;
+            }
+            if (space == 0 || space == 1)
+            {
+                shrinked += ({w});
+            }
+        }
+        // debug_message(sprintf("Shrinked: %O", shrinked));
+        return implode(shrinked, " ");
     }
 
     return verb;

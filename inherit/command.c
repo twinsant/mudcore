@@ -17,7 +17,9 @@ Date: 2019-03-12
  */
 mixed process_input(string arg)
 {
-    return COMMAND_D->default_alias(arg);
+    // debug_message(sprintf("%O process_input %s", this_object(), arg));
+    // trime leading and ending spaces
+    return COMMAND_D->default_alias(trim(arg));
 }
 
 nomask int command_hook(string arg)
@@ -28,6 +30,7 @@ nomask int command_hook(string arg)
     me = this_object();
 
     verb = query_verb();
+    debug_message(sprintf("command_hook %O %s: %s", me, arg, verb));
     if ((verb = trim(verb)) == "")
         return 0;
 
