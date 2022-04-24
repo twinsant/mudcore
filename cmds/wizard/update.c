@@ -18,7 +18,10 @@ int main(object me, string file)
         file = base_name(env);
     }
     if (file == VOID_OB)
+    {
+        // debug_message(sprintf("%O %O %O", me, env, file));
         return notify_fail(HIR "你不能在 VOID_OB 里重新编译 VOID_OB。\n" NOR);
+    }
 
     write("重新编译[" + file + "]:");
 
