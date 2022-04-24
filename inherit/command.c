@@ -30,6 +30,8 @@ nomask int command_hook(string arg)
     me = this_object();
 
     verb = query_verb();
+    if (arg)
+        arg = trim(arg);
     debug_message(sprintf("command_hook %O %s: %s", me, arg, verb));
     if ((verb = trim(verb)) == "")
         return 0;
