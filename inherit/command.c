@@ -26,6 +26,7 @@ nomask int command_hook(string arg)
 {
     string verb;
     object me, file;
+    object e;
 
     me = this_object();
 
@@ -36,10 +37,16 @@ nomask int command_hook(string arg)
     if ((verb = trim(verb)) == "")
         return 0;
 
-    if (!arg && (objectp(environment()) && environment()->query("exits/" + verb)) &&
+    e = environment();
+    if (!arg && (objectp(e) && e->query("exits/" + verb)) &&
         objectp(file = COMMAND_D->find_command("go")) &&
         call_other(file, "main", me, verb))
         ;
+    else if (objectp(e) && e->denied(verb))
+    {
+        write(sprintf("这里不能%s\n", verb));
+        return 1;
+    }
     else if (objectp(file = COMMAND_D->find_command(query_verb())) && call_other(file, "main", me, arg))
         ;
     else if (EMOTE_D->do_emote(me, verb, arg))
